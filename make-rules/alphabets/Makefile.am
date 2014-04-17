@@ -1271,3 +1271,16 @@ EXTRA_DIST = $(SCRS) test.xdy rom-comma-kludge.sed
 
 CLEANFILES = $(ALPHABETS) $(DOC_CLEAN)
 
+nobase_nodist_lang_DATA =
+subdirs =
+
+include persian/Makefile.am
+
+CLEANFILES += $(DOCS) $(nobase_nodist_lang_DATA)
+
+## Make sure all language subdirectories exist.
+BUILT_SOURCES = subdirs
+subdirs:
+	@for d in $(subdirs); do $(MKDIR_P) $$d; done
+.PHONY: subdirs
+
