@@ -21,8 +21,7 @@
 
 EXTRA_DIST = \
 	bedirxan-latin5.pl bedirxan-utf8.pl.in \
-	turkish-i-latin5.pl turkish-i-utf8.pl.in \
-	latin5.xdy
+	turkish-i-latin5.pl turkish-i-utf8.pl.in
 
 CLEANFILES = \
 	bedirxan-latin5.raw \

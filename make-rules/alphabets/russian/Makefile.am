@@ -20,8 +20,7 @@
 ## Boston, MA 02110-1301 USA.
 
 EXTRA_DIST = \
-    cp1251.pl iso88595.pl koi8-r.pl translit-iso-utf8.pl.in utf8.pl.in \
-    translit-iso-tex.xdy translit-tex.xdy translit-tgl-tex.xdy
+    cp1251.pl iso88595.pl koi8-r.pl translit-iso-utf8.pl.in utf8.pl.in
 
 CLEANFILES = \
 	cp1251.raw \

@@ -21,9 +21,7 @@
 
 EXTRA_DIST = \
 	iso88597.pl  polytonic-utf8.pl.in utf8.pl.in \
-	translit-latin4.pl translit-utf8.pl.in \
-	translit-tex.xdy
-
+	translit-latin4.pl translit-utf8.pl.in
 
 CLEANFILES = \
 	iso88597.raw \

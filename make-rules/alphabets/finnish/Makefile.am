@@ -20,9 +20,7 @@
 ## Boston, MA 02110-1301 USA.
 
 EXTRA_DIST = \
-	cp1252.pl latin9.pl utf8.pl.in \
-	tex-cp1252.xdy  tex-latin9.xdy
-
+	cp1252.pl latin9.pl utf8.pl.in
 
 CLEANFILES = \
 	cp1252.raw \
