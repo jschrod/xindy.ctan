@@ -557,6 +557,21 @@ nodist_norwegian_DATA = $(NORWEGIAN)
 DISTCLEANFILES += \
 	norwegian/utf8.pl
 
+persiandir = $(langdir)/persian
+
+PERSIAN = \
+	persian/variant1-utf8-lang.xdy \
+	persian/variant1-utf8-test.xdy \
+	persian/variant1-utf8.xdy \
+	persian/variant2-utf8-lang.xdy \
+	persian/variant2-utf8-test.xdy \
+	persian/variant2-utf8.xdy
+
+nodist_persian_DATA = $(PERSIAN)
+
+DISTCLEANFILES += \
+	persian/utf8.pl
+
 polishdir = $(langdir)/polish
 
 POLISH = \
@@ -940,6 +955,7 @@ SUBDIRS = \
 	macedonian \
 	mongolian \
 	norwegian \
+	persian \
 	polish \
 	portuguese \
 	romanian \
@@ -992,6 +1008,7 @@ ALPHABETS = \
 	$(MACEDONIAN) \
 	$(MONGOLIAN) \
 	$(NORWEGIAN) \
+	$(PERSIAN) \
 	$(POLISH) \
 	$(PORTUGUESE) \
 	$(ROMANIAN) \
@@ -1176,7 +1193,9 @@ DOCS_UTF8_OTHER = \
 	greek/utf8-doc.tex \
 	greek/polytonic-utf8-doc.tex \
 	hebrew/utf8-doc.tex \
-	klingon/utf8-doc.tex
+	klingon/utf8-doc.tex \
+	persian/variant1-utf8-doc.tex \
+	persian/variant2-utf8-doc.tex
 
 DOCS_CPS = \
 	$(DOCS_CP1250) \
@@ -1270,17 +1289,3 @@ DOC_CLEAN = \
 EXTRA_DIST = $(SCRS) test.xdy rom-comma-kludge.sed
 
 CLEANFILES = $(ALPHABETS) $(DOC_CLEAN)
-
-nobase_nodist_lang_DATA =
-subdirs =
-
-include persian/Makefile.am
-
-CLEANFILES += $(DOCS) $(nobase_nodist_lang_DATA)
-
-## Make sure all language subdirectories exist.
-BUILT_SOURCES = subdirs
-subdirs:
-	@for d in $(subdirs); do $(MKDIR_P) $$d; done
-.PHONY: subdirs
-
