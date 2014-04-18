@@ -7,6 +7,18 @@
 Sat Mar 28 18:07:07 2009   schrod
 ----------------------------------------------------------------------
 
+[Problem]	configure.ac: CONVERT_TO_UTF8 not available with recode
+
+see FIXME in file.
+
+On what system recode is available, but iconv ain't?
+Maybe we should throw out recode support.
+
+Btw: iconv is not looked for; if it's available.
+
+Fri Apr 18 15:28:52 2014   schrod
+----------------------------------------------------------------------
+
 [Problem]	abort while building documentation
 
 Folks on Mac OS X had aborts while make-rules documentation should

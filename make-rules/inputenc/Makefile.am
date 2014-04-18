@@ -38,12 +38,21 @@ INPUTENCS = \
 	latin.xdy \
 	latin1.xdy \
 	latin2.xdy \
-	latin3.xdy
+	latin3.xdy \
+	utf8.xdy
 
 latin.xdy : latin1.xdy latin2.xdy latin3.xdy
 	echo ';; Generated from latin?.xdy' >latin.xdy
 	echo >>latin.xdy
 	sort -u latin?.xdy | grep -v '^;' >>latin.xdy
+
+utf8.xdy : latin1.xdy latin2.xdy latin3.xdy
+	$(CONVERT_TO_UTF8)LATIN1 latin1.xdy >latin1-utf8.xdy
+	$(CONVERT_TO_UTF8)LATIN2 latin2.xdy >latin2-utf8.xdy
+	$(CONVERT_TO_UTF8)LATIN3 latin3.xdy >latin3-utf8.xdy
+	echo ';; Generated from recoded latin?.xdy' >utf8.xdy
+	echo >>utf8.xdy
+	sort -u latin?-utf8.xdy | grep -v '^;' >>utf8.xdy
 
 %.xdy %.idx :
 	$(PERL) $(srcdir)/make-testidx.pl TS1,T2A,T1 $* >$*.tex
@@ -135,8 +144,13 @@ TEXS = \
 	latin2.tex \
 	latin3.tex
 
+UTF8 = \
+	latin1-utf8.xdy \
+	latin2-utf8.xdy \
+	latin3-utf8.xdy
+
 EXTRA_DIST = $(PERLSCRIPTS)
 
-CLEANFILES = $(AUXS) $(DVIS) $(IDXS) $(INPUTENCS) $(LOGS) $(TEXS)
+CLEANFILES = $(AUXS) $(DVIS) $(IDXS) $(INPUTENCS) $(LOGS) $(TEXS) $(UTF8)
 
 nodist_inputenc_DATA = $(INPUTENCS)

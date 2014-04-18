@@ -73,13 +73,20 @@ AC_ARG_WITH([xindy-recode],
                            [Use `recode' instead of `iconv' @<:@default is NO@:>@]))
 if test "x$with_xindy_recode" != xyes; then
   CONVERT_FROM_UTF8='iconv -f UTF-8 -t #' # May need the trailing blank
+  CONVERT_TO_UTF8='iconv -t UTF-8 -f #' # May need the trailing blank
 else
   AC_CHECK_PROG(CONVERT_FROM_UTF8, recode, [recode UTF-8..])
   if test "x$CONVERT_FROM_UTF8" != 'xrecode UTF-8..'; then
     AC_MSG_ERROR([--with-xindy-recode specified, but `recode' not found])
   fi
+  # FIXME Conversion from UTF-8 with recode needs source encoding
+  # within the argument. This won't work. Currently, this is only used
+  # to establish utf8.xdy which doesn't work well anyhow for arbitrary
+  # languages. So let's skip its creation on systems that don't have iconv.
+  CONVERT_TO_UTF8=true
 fi
 AC_SUBST([CONVERT_FROM_UTF8])
+AC_SUBST([CONVERT_TO_UTF8])
 
 # Check that CLISP was found.
 # FIXME: Should we also check for latex in the buildrules case?
