@@ -376,7 +376,13 @@ if ( $is_TL ) { # TeX Live
     die "$cmd: Cannot locate xindy modules directory"  unless -d $modules_dir;
 
     if ( $is_w32 ) {
-	$cmd_dir = "$cmd_dir/../../../bin/win32";
+       if ( -d "$cmd_dir/../../../bin/win32" ) {	# TeX Live
+	   $cmd_dir = "$cmd_dir/../../../bin/win32";
+       } elsif ( -d "$cmd_dir/../../miktex/bin" ) {	# MikTeX
+	   $cmd_dir = "$cmd_dir/../../miktex/bin";
+       } else {
+	   die "$cmd: Cannot locate bin directory";
+       }
     } else {
 	die "$cmd: not a symlink as required for TeX Live"  unless -l $0;
 	# Follow symlinks and determine $cmd_dir such that
