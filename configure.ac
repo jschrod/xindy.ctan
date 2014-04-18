@@ -42,12 +42,12 @@ AM_CONDITIONAL([TEXLIVE_BUILD], [false])
 
 # Test for building make-rules
 AC_ARG_ENABLE(make-rules, AS_HELP_STRING([--enable-make-rules ],[build and install make-rules package (default is YES)]),[BUILDRULES=$enableval],[BUILDRULES=yes])
-test "$BUILDRULES" = "yes"  &&  AC_PROG_LATEX
+AS_IF([test "$BUILDRULES" = "yes"],[AC_PROG_LATEX])
 AM_CONDITIONAL(BUILDRULES, test "$BUILDRULES" = "yes")
 
 # Test for building Documentation
 AC_ARG_ENABLE(docs, AS_HELP_STRING([--enable-docs ],[build and install documentation (default is YES)]),[BUILDDOCS=$enableval],[BUILDDOCS=yes])
-test "$BUILDDOCS" = "yes"  &&  AC_PROG_PDFLATEX
+AS_IF([test "$BUILDDOCS" = "yes"],[AC_PROG_PDFLATEX])
 AM_CONDITIONAL(BUILDDOCS, test "$BUILDDOCS" = "yes")
 
 # Checks for programs:
