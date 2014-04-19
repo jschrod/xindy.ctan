@@ -115,12 +115,4 @@ You should have received a copy of the GNU General Public License in
 the file COPYING along with this package; if not, write to the Free
 Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-The xindy run-time environment contains CLISP, which is released under
-GPL version 2 (only). Please refer to rte/clisp-<version>/COPYRIGHT
-for the specific statement.
-
-The xindy run-time environment contains a xindy-specific CLISP-plugin
-named ordrules, which is released under GPL version 2 or later.
-
-The xindy kernel modules and base styles are released under GPL
-version 2 or later.
+The xindy index processor is released under GPL version 2 or later.
