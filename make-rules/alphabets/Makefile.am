@@ -1220,47 +1220,47 @@ DOCS = $(DOCS_CPS) $(DOCS_LAT) $(DOCS_CYR) $(DOCS_OTHER) $(DOCS_UTF8)
 
 alphabets-inc.tex : $(DOCS)
 	$(RM) $@
-	echo "\chapter{Latin scripts}" >>$@
-	echo "\ienc{cp1252}" >>$@
-	echo "\section{Codepage 1252}" >>$@
-	for i in $(DOCS_CP1252); do echo "\input{$$i}" >>$@; done
-	echo "\ienc{latin1}" >>$@
-	echo "\section{Codepage latin1}" >>$@
-	for i in $(DOCS_LATIN1); do echo "\input{$$i}" >>$@; done
-	echo "\ienc{cp850}" >>$@
-	echo "\section{Codepage 850}" >>$@
-	for i in $(DOCS_CP850); do echo "\input{$$i}" >>$@; done
-	echo "\ienc{latin2}" >>$@
-	echo "\section{Codepage latin2}" >>$@
-	for i in $(DOCS_LATIN2); do echo "\input{$$i}" >>$@; done
-	echo "\ienc{cp1250}" >>$@
-	echo "\section{Codepage 1250}" >>$@
-	for i in $(DOCS_CP1250); do echo "\input{$$i}" >>$@; done
-	echo "\ienc{latin3}" >>$@
-	echo "\section{Codepage latin3}" >>$@
-	for i in $(DOCS_LATIN3); do echo "\input{$$i}" >>$@; done
-	echo "\ienc{latin4}" >>$@
-	echo "\section{Codepage latin4}" >>$@
-	for i in $(DOCS_LATIN4); do echo "\input{$$i}" >>$@; done
-	echo "\ienc{latin5}" >>$@
-	echo "\section{Codepage latin5}" >>$@
-	for i in $(DOCS_LATIN5); do echo "\input{$$i}" >>$@; done
-	echo "\ienc{latin9}" >>$@
-	echo "\section{Codepage latin9}" >>$@
-	for i in $(DOCS_LATIN9); do echo "\input{$$i}" >>$@; done
-	echo "\ienc{cp1251}" >>$@
-	echo "\fenc{T2A}" >>$@
-	echo "\chapter{Cyrillic scripts}" >>$@
-	echo "\section{Codepage 1251}" >>$@
-	for i in $(DOCS_CYR_1251); do echo "\input{$$i}" >>$@; done
-#	echo "\ienc{iso-8859-7}" >>$@
-#	echo "\fenc{LGR}" >>$@
-#	echo "\chapter{Other scripts}" >>$@
-#	for i in $(DOCS_OTHER); do echo "\input{$$i}" >>$@; done
+	echo '\chapter{Latin scripts}' >>$@
+	echo '\ienc{cp1252}' >>$@
+	echo '\section{Codepage 1252}' >>$@
+	for i in $(DOCS_CP1252); do echo "\\input{$$i}" >>$@; done
+	echo '\ienc{latin1}' >>$@
+	echo '\section{Codepage latin1}' >>$@
+	for i in $(DOCS_LATIN1); do echo "\\input{$$i}" >>$@; done
+	echo '\ienc{cp850}' >>$@
+	echo '\section{Codepage 850}' >>$@
+	for i in $(DOCS_CP850); do echo "\\input{$$i}" >>$@; done
+	echo '\ienc{latin2}' >>$@
+	echo '\section{Codepage latin2}' >>$@
+	for i in $(DOCS_LATIN2); do echo "\\input{$$i}" >>$@; done
+	echo '\ienc{cp1250}' >>$@
+	echo '\section{Codepage 1250}' >>$@
+	for i in $(DOCS_CP1250); do echo "\\input{$$i}" >>$@; done
+	echo '\ienc{latin3}' >>$@
+	echo '\section{Codepage latin3}' >>$@
+	for i in $(DOCS_LATIN3); do echo "\\input{$$i}" >>$@; done
+	echo '\ienc{latin4}' >>$@
+	echo '\section{Codepage latin4}' >>$@
+	for i in $(DOCS_LATIN4); do echo "\\input{$$i}" >>$@; done
+	echo '\ienc{latin5}' >>$@
+	echo '\section{Codepage latin5}' >>$@
+	for i in $(DOCS_LATIN5); do echo "\\input{$$i}" >>$@; done
+	echo '\ienc{latin9}' >>$@
+	echo '\section{Codepage latin9}' >>$@
+	for i in $(DOCS_LATIN9); do echo "\\input{$$i}" >>$@; done
+	echo '\ienc{cp1251}' >>$@
+	echo '\fenc{T2A}' >>$@
+	echo '\chapter{Cyrillic scripts}' >>$@
+	echo '\section{Codepage 1251}' >>$@
+	for i in $(DOCS_CYR_1251); do echo "\\input{$$i}" >>$@; done
+#	echo '\ienc{iso-8859-7}' >>$@
+#	echo '\fenc{LGR}' >>$@
+#	echo '\chapter{Other scripts}' >>$@
+#	for i in $(DOCS_OTHER); do echo "\\input{$$i}" >>$@; done
 #	FIXME: UTF8 encoding
-#	echo "\section{UTF-8 scripts}" >>$@
-#	for i in $(DOCS_UTF8); do echo "\input{$$i}" >>$@; done
-#	echo "\ienc{utf8}" >>$@
+#	echo '\section{UTF-8 scripts}' >>$@
+#	for i in $(DOCS_UTF8); do echo "\\input{$$i}" >>$@; done
+#	echo '\ienc{utf8}' >>$@
 
 # whether to build docs
 if BUILDRULES
