@@ -2,6 +2,7 @@
 ;;
 ;;
 ;; Copyright (c) 2007-2013 Dohyun Kim <nomos at ktug org>
+;; Documentation corrected by Joachim Schrod <jschrod@acm.org>
 ;;
 ;; This work may be distributed and/or modified under the
 ;; conditions of the LaTeX Project Public License, either version 1.3c
@@ -13,8 +14,9 @@
 ;;
 ;; Xindy module for hangul characters
 ;;
-;; Usage:  texindy -L korean -I omega test.idx
-;;         xindy -M texindy -L korean -C utf8 test.idx
+;; Usage:  xindy -M texindy -M page-ranges -L korean -C utf8 test.idx
+;;
+;; Do NOT use texindy if your raw index is not LICR-encoded or from Omega.
 
 (require "lang/general/utf8-lang.xdy")
 (require "lang/korean/utf8.xdy")
