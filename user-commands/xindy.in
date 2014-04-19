@@ -102,6 +102,9 @@ If no input encoding is specified via C<--codepage>, a xindy module
 for that language is searched with a latin, a cp, an iso, or ascii
 encoding, in that order.
 
+Language modules are either placed in the F<lang> or in the
+F<contrib/lang> sub-directory of the modules base directory.
+
 =item C<--codepage> I<enc> / B<-C> I<enc>
 
 The raw input is in input encoding I<enc>. This information is used to
@@ -725,8 +728,6 @@ sub xindy_expression () {
     # FIXME: I didn't see all languages. What's on with gypsy and
     # hausa?
     if ( $language ) {
-	my $ld = "$modules_dir/lang";
-	my $variant;
 	# If there is no language directory, this might be a variant.
 	# Language names and variants are separated by hyphens. The
 	# variant name "din" is an abbreviation for "din5007". The
@@ -734,12 +735,21 @@ sub xindy_expression () {
 	# name.
 	#
 	# FIXME: Or is "iso" the variant "translit"?!
-	if ( ! -d "$ld/$language" ) {
-	    $language =~ /^([^-]*)-(.*)/ ; # language name ends with 1st hyphen
-	    if ( $2 && -d "$ld/$1" ) { # $2 is not set if the regex didn't match
-		$language = $1;
-		$variant = "$2-"  unless ( $2 eq 'iso' );
-		$variant eq 'din-'  and  $variant = 'din5007-';
+	my @lang_base_dirs = ("$modules_dir/lang", "$modules_dir/contrib/lang");
+	my ($lang_dir, $variant);
+	foreach my $ld ( @lang_base_dirs ) {
+	    if ( -d "$ld/$language" ) {
+		$lang_dir = "$ld/$language";
+		last;
+	    } else {
+		$language =~ /^([^-]*)-(.*)/ ; # language name ends with 1st hyphen
+		if ( $2 && -d "$ld/$1" ) { # $2 is not set if the regex didn't match
+		    $language = $1;
+		    $lang_dir = "$ld/$language";
+		    $variant = "$2-"  unless ( $2 eq 'iso' );
+		    $variant eq 'din-'  and  $variant = 'din5007-';
+		    last;
+		}
 	    }
 	}
 	# Let's guess the codepage. We take any that starts with
@@ -747,7 +757,7 @@ sub xindy_expression () {
 	@codepages = qw(latin cp iso8859 ascii)  unless @codepages;
 	my @styles;
 	foreach my $cp ( @codepages ) {
-	    @styles = glob("$ld/$language/$variant$cp*-lang.xdy");
+	    @styles = glob("$lang_dir/$variant$cp*-lang.xdy");
 	    last  if @styles;
 	}
 	unless ( @styles ) {
