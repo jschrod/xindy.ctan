@@ -4,7 +4,7 @@
 ## Or, call `autoconf' to create only configure.
 
 ## Copyright (C) 2004-2005 by Gour.
-## Copyright (C) 2008,2009 by Joachim Schrod.
+## Copyright (C) 2008-2014 by Joachim Schrod.
 ##
 ## This program is free software; you can redistribute it and/or
 ## modify it under the terms of the GNU General Public License as
@@ -17,11 +17,11 @@
 ## General Public License for more details.
 ##
 ## You should have received a copy of the GNU General Public License
-## along with this program in the file LICENSE; if not, write to the
+## along with this program in the file COPYING; if not, write to the
 ## Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
 ## Boston, MA 02110-1301 USA.
 
-AC_PREREQ(2.59)
+AC_PREREQ(2.68)
 dnl Get version string from file; need to discard training newline
 dnl Note: patsubst() or translit() don't work here, it's not possible
 dnl to specify substitution of \n, so we use substr. This won't work
@@ -33,9 +33,14 @@ AC_INIT([xindy], XINDY_VERSION, [xindy-discuss@lists.sourceforge.net])
 # Automake's dist target needs all to-be-distributed files flagged in
 # Makefile.am files; we have not done that yet. Since we don't do C
 # programs, automake's defaults are not usable for us, too.
+#
+# FIXME: Now make dist works, thanks to Peter's patches. Shouldn't I
+# need to change here now?
 AM_INIT_AUTOMAKE([foreign no-define])
 
 # Installation directories for standalone xindy.
+# FIXME: Why is this substituted? Isn't that an automake declaration
+# in src/Makefile.am that's never changed?
 memdir='$(pkglibdir)'
 AC_SUBST([memdir])
 AM_CONDITIONAL([TEXLIVE_BUILD], [false])
@@ -89,8 +94,8 @@ AC_SUBST([CONVERT_FROM_UTF8])
 AC_SUBST([CONVERT_TO_UTF8])
 
 # Check that CLISP was found.
-# FIXME: Should we also check for latex in the buildrules case?
-# What about a C compiler? install?
+# FIXME: What about perl? Does AC_PATH_PROG don't abort if the program
+# cannot be found?
 test "$CLISP"  ||  AC_MSG_ERROR([CLISP is needed to build and run xindy])
 
 # No checks for header files. We use stdio.h, unistd.h, and string.h.
