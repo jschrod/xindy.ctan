@@ -99,7 +99,7 @@ The index is sorted according to the rules of language I<lang>. These
 rules are encoded in a xindy module created by I<make-rules>.
 
 If no input encoding is specified via C<--codepage>, a xindy module
-for that language is searched with a latin, a cp, an iso, or ascii
+for that language is searched with a latin, a cp, an iso, ascii, or utf8
 encoding, in that order.
 
 Language modules are either placed in the F<lang> or in the
@@ -753,8 +753,8 @@ sub xindy_expression () {
 	    }
 	}
 	# Let's guess the codepage. We take any that starts with
-	# "latin", "cp", "iso8859", or "ascii".
-	@codepages = qw(latin cp iso8859 ascii)  unless @codepages;
+	# "latin", "cp", "iso8859", "ascii", or "utf8".
+	@codepages = qw(latin cp iso8859 ascii utf8)  unless @codepages;
 	my @styles;
 	foreach my $cp ( @codepages ) {
 	    @styles = glob("$lang_dir/$variant$cp*-lang.xdy");
