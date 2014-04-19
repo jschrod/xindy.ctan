@@ -41,6 +41,9 @@ by xindy modules, with a convenient set already preloaded.
 Files with the raw index are passed as arguments. If no arguments are
 passed, the raw index will be read from standard input.
 
+B<Do not use texindy with XeLaTeX or LuaLaTeX!> When you use these
+LaTeX engines, you must use B<xindy -C utf8 -M texindy -M page-ranges> instead.
+
 A good introductionary description of B<texindy> appears in the
 indexing chapter of the LaTeX Companion (2nd ed.)
 
@@ -49,9 +52,7 @@ markup, the command xindy(1) is probably more of interest for you.
 
 B<texindy> is an approach to merge support for the I<make-rules>
 framework, own xindy modules (e.g., for special LaTeX commands in the
-index), and a reasonable level of MakeIndex compatibility. There are
-other older approaches, eventually they will get a description on the
-xindy Web Site, http://www.xindy.org/.
+index), and a reasonable level of MakeIndex compatibility.
 
 
 =head1 OPTIONS
@@ -110,9 +111,18 @@ encoding, in that order.
 
 =item C<--codepage> I<enc> / B <-C> I<enc>
 
-The raw input is in input encoding I<enc>. This information is used to
-select the correct xindy sort module and also the I<inputenc> target
-encoding for C<latex> input markup.
+B<texindy>'s raw input is always assumed to be encoded in LaTeX
+Internal Character Representation (LICR). I.e., non-ASCII characters
+are encoded as command sequences. This option tells xindy the encoding
+it shall use internally for sorting.
+
+Effectively, you need this option to specify the encoding of letter
+group headings.
+
+Encoding C<utf8> is only supported for Latin alphabets. But if you use
+non-Latin alphabets, you probably use XeLaTeX or LuaLaTeX and then you
+must not use B<texindy> anyhow. Then direct usage of B<xindy> is
+appropriate.
 
 When C<omega> input markup is used, C<utf8> is always used as the sort
 codepage and no inputenc module is loaded. Then this option is
