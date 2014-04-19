@@ -1,10 +1,16 @@
-# $Id: NEWS,v 1.4 2010/05/10 23:59:45 jschrod Exp $
-#------------------------------------------------------------
 
 XINDY RELEASE NOTES
 ===================
 
 Version   Date	      Remarks
+
+2.5.0	  2014-04-19  `TeX Live 2014 Release'.
+		      Patches from TeX Live. Support for MikTeX.
+		      New languages: Persian, Korean.
+		      Corrected sorting: Polytonik Greek, Vietnamese.
+		      Language modules may be in modules/contrib/lang/.
+		      By default, make-rules documentation is not created.
+		      texindy utf8 codepage for Latin scripts supported.
 
 2.4       2010-05-11  `TUG30 Release'.
 		      Pure Lisp implementation, needs an installed CLISP.

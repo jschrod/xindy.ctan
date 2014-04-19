@@ -44,6 +44,14 @@ package maintainer of xindy.
 Peter Breitenlohner improved xindy's autoconf mechanism for better
 integration in TeX-Live 2010 and better maintainability.
 
+Akira Kakuto was instrumental in getting Windows support into shape
+into the hands of many people. Ulrike Fisher pushes for inclusion in
+MikTeX.
+
+Several people contributed whole language modules or fixes for
+existing modules: Claudio Beccari, Vafa Khalighi, Dohyun Kim, Kihwang
+Lee, Pavel Striz, Apostolos Syropoulos.
+
 
 Email addresses for the authors are best looked up in the mailing list
 archives; for spam-protection reasons I don't want to list them here.
