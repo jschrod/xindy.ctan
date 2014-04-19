@@ -1,0 +1,39 @@
+# Files that appear in all directories
+Makefile.in
+Makefile
+.deps/
+*.raw
+
+# Specific files from autoconf/automake/configure
+aclocal.m4
+autom4te.cache/
+config.status
+config.guess
+config.sub
+configure
+depcomp
+install-sh
+missing
+ylwrap
+
+# Files created by make
+make-rules/alphabets/alphabets-doc.pdf
+make-rules/alphabets/alphabets-inc.tex
+make-rules/alphabets/*/utf8.pl
+make-rules/alphabets/*/*.tex
+make-rules/alphabets/*/*.xdy
+!make-rules/alphabets/dutch/tex-latin1.xdy
+!make-rules/alphabets/english/tex-ascii.xdy
+!make-rules/alphabets/finnish/tex-cp1252.xdy
+!make-rules/alphabets/finnish/tex-latin9.xdy
+!make-rules/alphabets/german/tex-din5007-latin1.xdy
+!make-rules/alphabets/german/tex-duden-latin1.xdy
+!make-rules/alphabets/german/tex-latin1.xdy
+make-rules/inputenc/*.tex
+make-rules/inputenc/*.xdy
+src/defaults.xdy
+tex2xindy/tex2xindy
+tex2xindy/tex2xindy.c
+tex2xindy/tex2xindy.o
+user-commands/texindy
+user-commands/xindy
