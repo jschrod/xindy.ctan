@@ -27,6 +27,13 @@ have been created. There exists a ticket from Yannis with logs.
 Tue May 11 02:08:07 2010   schrod
 ----------------------------------------------------------------------
 
+[Missing]	man pages of texindy and xindy are not generated
+
+Need to transfer make rules from old build system.
+
+Sat Apr 19 21:39:39 2014   schrod
+----------------------------------------------------------------------
+
 [Missing]	Changes from Vladimir/Peter for TeX Live
 
 TL install dirs
