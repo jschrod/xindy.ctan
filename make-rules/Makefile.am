@@ -19,7 +19,7 @@
 ## Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
 ## Boston, MA 02110-1301 USA.
 
-SUBDIRS = alphabets inputenc styles
+SUBDIRS = alphabets inputenc
 
-EXTRA_DIST = makeindex.sh README
+EXTRA_DIST = README
 

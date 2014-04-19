@@ -171,7 +171,6 @@ AC_CONFIG_FILES([Makefile \
 		make-rules/alphabets/upper-sorbian/Makefile \
 		make-rules/alphabets/vietnamese/Makefile \
 		make-rules/inputenc/Makefile \
-		make-rules/styles/Makefile \
 		doc/Makefile \
 	    	doc/style-tutorial/Makefile
 ])
