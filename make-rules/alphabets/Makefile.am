@@ -1267,8 +1267,8 @@ if BUILDRULES
 
 if BUILDDOCS
 alphabets-doc.pdf : alphabets-doc.tex alphabets-inc.tex
-	pdflatex -interaction batchmode $(srcdir)/alphabets-doc.tex
-	pdflatex -interaction batchmode $(srcdir)/alphabets-doc.tex
+	pdflatex -interaction nonstopmode $(srcdir)/alphabets-doc.tex
+	pdflatex -interaction nonstopmode $(srcdir)/alphabets-doc.tex
 
 PDFS = alphabets-doc.pdf
 

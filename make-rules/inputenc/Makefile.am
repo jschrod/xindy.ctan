@@ -56,7 +56,7 @@ utf8.xdy : latin1.xdy latin2.xdy latin3.xdy
 
 %.xdy %.idx :
 	$(PERL) $(srcdir)/make-testidx.pl TS1,T2A,T1 $* >$*.tex
-	latex -interaction batchmode $*.tex
+	latex -interaction nonstopmode $*.tex
 	$(PERL) $(srcdir)/make-inp-rules.pl <$*.idx >$*.xdy
 
 PERLSCRIPTS = \
