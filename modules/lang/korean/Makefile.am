@@ -2,7 +2,6 @@
 ## autoconf/automake files.
 ## Or, call `automake Makefile' to create only Makefile.in.
 
-## Copyright (C) 2004-2005 by Gour.
 ## Copyright (C) 2014 by Joachim Schrod.
 ##
 ## This program is free software; you can redistribute it and/or
@@ -20,4 +19,13 @@
 ## Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
 ## Boston, MA 02110-1301 USA.
 
-SUBDIRS = german korean latin
+langdir = $(pkglibdir)/modules/lang
+
+koreandir = $(langdir)/korean
+
+RULES = utf8.xdy utf8-lang.xdy
+
+EXTRA_DIST = $(RULES)
+
+korean_DATA = $(RULES)
+

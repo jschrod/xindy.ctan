@@ -111,6 +111,7 @@ AC_CONFIG_FILES([Makefile \
 		modules/class/Makefile \
 		modules/lang/Makefile \
 		modules/lang/german/Makefile \
+		modules/lang/korean/Makefile \
 		modules/lang/latin/Makefile \
 		modules/ord/Makefile \
 		modules/rules/Makefile \
