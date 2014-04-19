@@ -1,18 +1,18 @@
-$Id: README.distrib-source,v 1.3 2010/05/10 23:59:45 jschrod Exp $
-------------------------------------------------------------
 
 xindy (`fleXible INDexing sYstem') is a flexible index processor that
 creates tagged index for publication system. xindy merges, sorts, and
 outputs markup for raw index entries. It is highly configurable. It
 supports many languages.
 
-This is the source distribution of xindy release 2.3,
-aka the `Gour and Jörg Waited Too Long For It Release'.
+This is the source distribution of xindy,
 Release notes are available in the file NEWS, in this directory.
 
-It is available from Sourceforge, see http://www.xindy.org/ for more
-information. This Web Site also contains the most up-to-date
-information about xindy.
+The original source is available from Sourceforge, see
+http://www.xindy.org/ for more information. This Web Site should
+contain also the most up-to-date information about xindy. Sadly, it
+hasn't. Nowadays, TeX Live and CTAN are the source of the most current
+distribution; sources are available over Joachim's Github account,
+https://github.com/jschrod/xindy.ctan.
 
 
 INSTALLATION (Short Version)
