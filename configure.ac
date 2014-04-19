@@ -46,7 +46,7 @@ AS_IF([test "$BUILDRULES" = "yes"],[AC_PROG_LATEX])
 AM_CONDITIONAL(BUILDRULES, test "$BUILDRULES" = "yes")
 
 # Test for building Documentation
-AC_ARG_ENABLE(docs, AS_HELP_STRING([--enable-docs ],[build and install documentation (default is YES)]),[BUILDDOCS=$enableval],[BUILDDOCS=yes])
+AC_ARG_ENABLE(docs, AS_HELP_STRING([--enable-docs ],[build and install documentation (default is NO)]),[BUILDDOCS=$enableval],[BUILDDOCS=no])
 AS_IF([test "$BUILDDOCS" = "yes"],[AC_PROG_PDFLATEX])
 AM_CONDITIONAL(BUILDDOCS, test "$BUILDDOCS" = "yes")
 
