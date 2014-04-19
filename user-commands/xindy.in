@@ -370,7 +370,7 @@ $TMPDIR = ".";
 # FIXME: In standalone installations, modules are still placed in lib
 # directory. This is not conformant to FHS.
 
-if ( $is_TL ) { # TeX Live
+if ( $is_TL ) { # TeX Live and MikTeX
 
     $modules_dir = Cwd::realpath("$cmd_dir/../../xindy/modules");
     die "$cmd: Cannot locate xindy modules directory"  unless -d $modules_dir;
@@ -387,14 +387,14 @@ if ( $is_TL ) { # TeX Live
 	die "$cmd: not a symlink as required for TeX Live"  unless -l $0;
 	# Follow symlinks and determine $cmd_dir such that
 	# $cmd_dir/xindy -> $r0 = XINDY_SCRIPTDIR/xindy.pl
-	#
-	# FIXME: What's this code good for? Cwd::realpath() already
-	# resolves all symbolic links; this just recomputes that
-	# information manually! It's from Peter, check with him.
+	# I.e., it determines the directory with the last symbolic link; the
+	# one that points to a real file. That's the directory with the binary
+	# files (Lisp executable and memory file).
 	$real_cmd = $0;
 	while (-l $real_cmd) {
 	    $cmd_dir = dirname($real_cmd);
 	    $real_cmd = readlink($real_cmd);
+	    # \ directory separator may happen on Cygwin.
 	    $real_cmd = "$cmd_dir/$real_cmd"  unless $real_cmd =~ m,^[\\/],; # relative link
 	}
     }
