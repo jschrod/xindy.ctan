@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# $Id: texindy,v 1.11 2010/05/10 23:39:24 jschrod Exp $
+# $Id: texindy,v 1.12 2010/08/12 00:16:01 jschrod Exp $
 #------------------------------------------------------------
 # (history at end)
 
@@ -350,7 +350,7 @@ GNU General Public License for more details.
 use strict;
 use English qw(-no_match_vars);
 
-our $VERSION = sprintf "%d.%02d", q$Revision: 1.11 $ =~ /: (\d+)\.(\d+)/ ;
+our $VERSION = sprintf "%d.%02d", q$Revision: 1.12 $ =~ /: (\d+)\.(\d+)/ ;
 
 
 # Used modules.
@@ -420,7 +420,8 @@ sub usage ( ;$ )
 {
     my $exit_code = shift;
     $exit_code += 0;			# turn undef into 0
-    print STDERR <<_EOT_
+    my $out = ( $exit_code ? *STDERR : *STDOUT );
+    print $out <<_EOT_
 
 usage: $cmd [-V?h] [-qv] [-iglr] [-d magic] [-o outfile.ind] [-t log] \\
             [-L lang] [-C codepage] [-M module] [-I input] [idx0 idx1 ...]
@@ -608,6 +609,9 @@ sub output_xindy_release () {
 #======================================================================
 #
 # $Log: texindy,v $
+# Revision 1.12  2010/08/12 00:16:01  jschrod
+#     Output help message on stdout if there's no error.
+#
 # Revision 1.11  2010/05/10 23:39:24  jschrod
 #     Incorporate TeX-Live patches from Vladimir Volovich and Peter
 # Breitenlohner: Support for TL installation scheme, support for Mac OS
