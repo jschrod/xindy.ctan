@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# $Id: xindy.pl,v 1.17 2010/08/12 00:16:01 jschrod Exp $
+# $Id: xindy.pl,v 1.18 2011/01/18 22:18:29 jschrod Exp $
 #------------------------------------------------------------
 # (history at end)
 
@@ -266,6 +266,22 @@ should please contact the author.
 
 =item *
 
+If you have an index rage and a location attribute, e.g.,
+C<\index{key\(attr}> starts the range, one needs (1) to specify that
+attribute in the range closing entry as well (i.e., as
+C<\index{key\)attr}>) and (2) one needs to declare the index attribute
+in an B<xindy> style file.
+
+MakeIndex will output the markup C<\attr{page1--page2}> for such a
+construct. This is not possible to achieve in B<xindy>, output will be
+C<\attrMarkup{page1}--\attrMarkup{page2}>. (This is actually
+considered a bug, but not a high priority one.)
+
+The difference between MakeIndex page number tags and B<xindy>
+location attributes was already explained in the previous item.
+
+=item *
+
 The MakeIndex compatibility definitions support only the default raw
 index syntax and markup definition. It is not possible to configure
 raw index parsing or use a MakeIndex style file to describe output
@@ -322,7 +338,7 @@ GNU General Public License for more details.
 use strict;
 use English qw(-no_match_vars);
 
-our $VERSION = sprintf "%d.%02d", q$Revision: 1.17 $ =~ /: (\d+)\.(\d+)/ ;
+our $VERSION = sprintf "%d.%02d", q$Revision: 1.18 $ =~ /: (\d+)\.(\d+)/ ;
 
 
 # Used modules.
@@ -874,6 +890,10 @@ sub quotify ( $ ) {
 #======================================================================
 #
 # $Log: xindy.pl,v $
+# Revision 1.18  2011/01/18 22:18:29  jschrod
+#     Document the range raw markup incompatibility with MakeIndex.
+# (Bug ticket 998541)
+#
 # Revision 1.17  2010/08/12 00:16:01  jschrod
 #     Output help message on stdout if there's no error.
 #
