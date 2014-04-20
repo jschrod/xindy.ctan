@@ -735,7 +735,7 @@ sub xindy_expression () {
 	# name.
 	#
 	# FIXME: Or is "iso" the variant "translit"?!
-	my @lang_base_dirs = ("$modules_dir/lang", "$modules_dir/contrib/lang");
+	my @lang_base_dirs = ("$modules_dir/contrib/lang", "$modules_dir/lang");
 	my ($lang_dir, $variant);
 	foreach my $ld ( @lang_base_dirs ) {
 	    if ( -d "$ld/$language" ) {
