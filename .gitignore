@@ -36,4 +36,6 @@ tex2xindy/tex2xindy
 tex2xindy/tex2xindy.c
 tex2xindy/tex2xindy.o
 user-commands/texindy
+user-commands/texindy.pdf
 user-commands/xindy
+user-commands/xindy.pdf

@@ -38,6 +38,17 @@ endif !TEXLIVE_BUILD
 
 man_MANS = texindy.1 xindy.1
 
+SUFFIXES = .in .1 .pdf
+
+.in.1:
+	pod2man --name $* --center xindy --release "Release $(VERSION)" $< >$@
+
+.1.pdf:
+	groff -man -P-g $< | ps2pdf - $@
+
+man: texindy.pdf xindy.pdf
+	cp $? ../doc
+
 EXTRA_DIST = $(man_MANS) texindy.in xindy.in
 
 CLEANFILES = $(scripts)
