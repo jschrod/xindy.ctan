@@ -252,39 +252,42 @@ NIL in cases where no switch keyword was found in EXPR.
 (defmacro define-alphabet (&whole whole &optional name string-list)
   (cond
 ;; line 239 "intface.nw"
-((null name)
- (error "missing argument <name> in `~S' !" whole))
-((not (or (symbolp name) (stringp name)))
- (error "~S is not a symbol or a string in `~S' !" name whole))
+    ((null name)
+ 	  (error "missing argument <name> in `~S' !" whole))
+	((not (or (symbolp name) (stringp name)))
+ 	  (error "~S is not a symbol or a string in `~S' !" name whole))
 ;; line 256 "intface.nw"
-        ((not (listp string-list))
-           (error "missing argument <string-list> !"))
-        ((not (list-of-strings-p string-list))
-           (error "~S is not a list of strings" string-list))
-        (t `(LET ((NAME (STRINGIFY ',name)))
-             (WHEN (LOOKUP-BASETYPE *indexstyle* NAME)
-               (NRAW "redefining alphabet `~S'" NAME))
-             (ADD *indexstyle* (MAKE-ALPHABET NAME ',string-list))))))
+    ((not (listp string-list))
+      (error "missing argument <string-list> !"))
+    ((not (list-of-strings-p string-list))
+       (error "~S is not a list of strings" string-list))
+    (t `(LET ((NAME (STRINGIFY ',name)))
+          (WHEN (LOOKUP-BASETYPE *indexstyle* NAME)
+             (NRAW "redefining alphabet `~S'" NAME))
+          (ADD *indexstyle* (MAKE-ALPHABET NAME ',string-list))))))
 
 (defmacro define-alphabet* (&whole whole &optional name string-list)
   (cond
 ;; line 239 "intface.nw"
-((null name)
- (error "missing argument <name> in `~S' !" whole))
-((not (or (symbolp name) (stringp name)))
- (error "~S is not a symbol or a string in `~S' !" name whole))
+    ((null name)
+      (error "missing argument <name> in `~S' !" whole))
+    ((not (or (symbolp name) (stringp name)))
+      (error "~S is not a symbol or a string in `~S' !" name whole))
 ;; line 267 "intface.nw"
-        ((not (listp string-list))
-           (error "missing argument <string-list> !"))
-        (t (let ((scar (car string-list)))
-             (if (and (symbolp scar) (fboundp scar))
-                 `(LET ((NAME (STRINGIFY ',name))
-                        (STRING-LIST ,string-list)) #| evaluates string-list |#
-                   (UNLESS (LIST-OF-STRINGS-P STRING-LIST)
-                     (ERROR "~S is not a list of strings" STRING-LIST))
-                   (WHEN (LOOKUP-BASETYPE *indexstyle* NAME)
-                     (NRAW "redefining alphabet `~S'" NAME))
-                   (ADD *indexstyle* (MAKE-ALPHABET NAME STRING-LIST))))))))
+    ((not (listp string-list))
+      (error "missing argument <string-list> !"))
+    (t (let ((scar (car string-list)))
+         (cond 
+           ((and (symbolp scar) (fboundp scar))
+              `(LET ((NAME (STRINGIFY ',name))
+                     (STRING-LIST ,string-list)) #| evaluates string-list |#
+                 (UNLESS (LIST-OF-STRINGS-P STRING-LIST)
+                   (ERROR "~S is not a list of strings" STRING-LIST))
+                 (WHEN (LOOKUP-BASETYPE *indexstyle* NAME)
+                   (NRAW "redefining alphabet `~S'" NAME))
+                 (ADD *indexstyle* (MAKE-ALPHABET NAME STRING-LIST))))
+           (t (error "~S is not a symbol or function!" scar)))))))
+		  
 ;; line 284 "intface.nw"
 (defmacro define-enumeration (&whole
                               whole
