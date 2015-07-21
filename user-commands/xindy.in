@@ -177,7 +177,7 @@ The following languages are supported:
  greek-iso     polish
 
 German recognizes two different sorting schemes to handle umlauts:
-normally, C<ä> is sorted like C<ae>, but in phone books or
+normally, C<Ã¤> is sorted like C<ae>, but in phone books or
 dictionaries, it is sorted like C<a>. The first scheme is known as
 I<DIN order>, the second as I<Duden order>.
 
@@ -761,8 +761,14 @@ sub xindy_expression () {
 	# "latin", "cp", "iso8859", "ascii", or "utf8".
 	@codepages = qw(latin cp iso8859 ascii utf8)  unless @codepages;
 	my @styles;
+	# If the path contains spaces must be enclosed in quotes (works on Linux and Windows)
+	if ($lang_dir =~ m/\ /) {
+	    $safe_lang_dir = quotify($lang_dir);
+	} else {
+	    $safe_lang_dir = $lang_dir;
+	}
 	foreach my $cp ( @codepages ) {
-	    @styles = glob("$lang_dir/$variant$cp*-lang.xdy");
+	    @styles = glob("$safe_lang_dir/$variant$cp*-lang.xdy");
 	    last  if @styles;
 	}
 	unless ( @styles ) {
